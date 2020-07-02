@@ -1,0 +1,19 @@
+{
+    "name": "vue-mscroll",
+    "version": "1.0.1",
+    "description": "MScroll插件vue封装",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "scroll",
+        "vue",
+        "mscroll"
+    ],
+    "author": "eyeear <1364988979@qq.com>",
+    "license": "ISC",
+    "dependencies": {
+        "@eyeear/mscroll": "^1.1.0"
+    }
+}
