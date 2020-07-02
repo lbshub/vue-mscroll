@@ -5,14 +5,14 @@
 
 import MScroll from '@eyeear/mscroll'
 
-export default {
-    name: 'MScroll',
+const Scroll = {
+    name: 'vue-mscroll',
     props: {
         vertical: {
             type: Boolean,
             default: false
         },
-        showScrollbar: {
+        scrollbar: {
             type: Boolean,
             default: false
         },
@@ -85,7 +85,7 @@ export default {
             }
             this.scroll = new MScroll(this.$refs.wrapper, {
                 vertical: this.vertical,
-                showScrollbar: this.showScrollbar,
+                showScrollbar: this.scrollbar,
                 scrollbarSize: this.scrollbarSize,
                 scrollbarColor: this.scrollbarColor,
                 scrollbarOpacity: this.scrollbarOpacity,
@@ -149,4 +149,10 @@ export default {
             this.$slots.default
         )
     }
+}
+
+export default Scroll
+
+if (typeof window !== 'undefined' && window.Vue) {
+    window.Vue.component('m-scroll', Scroll)
 }

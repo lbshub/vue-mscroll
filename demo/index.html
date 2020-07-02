@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-mscroll demo</title>
+</head>
+
+<body>
+    <style>
+        body,
+        div,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #app {
+            padding: 50px;
+        }
+        
+        .v-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: red;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .v-item {
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+            font-size: 16px;
+            color: white;
+            background: red;
+            border-bottom: 2px solid white;
+        }
+        
+        .v-item:last-child {
+            border-width: 0;
+        }
+    </style>
+
+    <div id="app">
+        <m-scroll class="v-wrapper" ref="vscroll" vertical scrollbar :scrollbar-color="color" :scrollbar-size="5" :scrollbar-opacity="0.8" mouse wheel @loadmore="loadMore">
+            <ul class="v-scrolle">
+                <li class="v-item" v-for="index in total" :key="index">{{ index }}</li>
+            </ul>
+        </m-scroll>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script> -->
+    <script src="vue-mscroll.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                color: '#fff',
+                total: 20,
+                count: 1,
+                loading: false
+            },
+            watch: {
+                total() {
+                    this.$nextTick(() => {
+                        this.$refs.vscroll.refresh();
+                    });
+                }
+            },
+            methods: {
+                loadMore() {
+                    if (this.loading) return;
+                    this.loading = true;
+                    if (this.count++ >= 5) return;
+                    setTimeout(() => {
+                        this.total = this.total + 20;
+                        this.loading = false;
+                    }, 500);
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

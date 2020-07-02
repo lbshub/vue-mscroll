@@ -38,10 +38,10 @@ export default {
   <m-scroll 
     class="wrapper" 
     ref="scroll" 
-    showScrollbar
-    :scrollbarColor="#f00"
-    :scrollbarSize="5"
-    :scrollbarOpacity="0.8"
+    scrollbar
+    :scrollbar-color="#f00"
+    :scrollbar-size="5"
+    :scrollbar-opacity="0.8"
   >
       ...
   </m-scroll>
@@ -66,7 +66,7 @@ export default {
 ## props
 ```
     - vertical 是否垂直方向 默认false 
-    - showScrollbar 是否显示滚动条 默认false
+    - scrollbar 是否显示滚动条 默认false
       - scrollbarColor 滚动条颜色 默认 '#000' 
       - scrollbarSize 滚动条大小 默认 3 (px) 
       - scrollbarOpacity 滚动条透明度 默认 0.5 (0 - 1) 
